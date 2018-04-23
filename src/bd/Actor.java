@@ -199,7 +199,7 @@ int IND_NR;
            String qrq ="INSERT INTO actor (id_actor, nombre, fecha_nacimiento) values ("+iId+",'"+sNombre+"','"+sfecha_nacimiento+"')";
            System.out.println(qrq);
            try{
-               stmt.executeUpdate(qrq);
+               stmt.executeQuery(qrq);
                JOptionPane.showMessageDialog(null, "Registro grabado satisfactoriamente");
            }catch(Exception e){
                System.out.println("error al grabar "+e.getMessage());
@@ -209,7 +209,7 @@ int IND_NR;
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         String borr;
-        borr = "delete from actor where id_actor = " + tx_idactor.getText();
+        borr = "delete from actor where id_actor = " + Integer.parseInt(tx_idactor.getText());
         System.out.println(borr);
        tx_idactor.setText(EMPTY);
        tx_nombre.setText(EMPTY);
@@ -218,8 +218,10 @@ int IND_NR;
        IND_NR=0;
         try {
             rs = stmt.executeQuery(borr);
-             JOptionPane.showMessageDialog(null, "Registro eliminado satisfactoriamente");
-        } catch (SQLException e) {
+             System.out.println("hola duvan");
+        } catch (Exception e) {
+          System.out.println("hola corin");
+          e.printStackTrace();
           
         }
         
